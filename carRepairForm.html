@@ -1,0 +1,170 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Car Repair Form</title>
+</head>
+	<style>
+		
+		.bgimage{
+			width:1100px;
+			height:570px;
+			background-image: url("assets/images/carrepair.jpg");
+			background-repeat: no-repeat;
+			background-size: 100%;
+			border-radius: 10px 150px;
+		}
+		
+		.titlepart{
+			float:left;
+			width:350px;
+			height:570px;
+			background-color: rgba(0,33,169,0.5);
+			border-radius: 10px 0px 0px 150px;
+		}
+		
+		.companylogo{
+			position: absolute;
+			height:150px;
+			width:140px;
+			background-image: url("assets/images/logo.png");
+			background-size: 100%;
+			background-repeat: no-repeat;
+			margin-top: 120px;
+			margin-left: 110px;
+		}
+		
+		.title{	
+			font-family: Impact, Haettenschweiler, "Franklin Gothic Bold", "Arial Black", "sans-serif";
+			font-size: 60px;
+			color: rgba(255,255,255,1.00);
+			text-align: center;
+			padding-top: 250px;		
+		}
+		
+		.form{
+			float:left;
+			background-color: rgba(7,7,7,0.5);
+			height:570px;
+			width:750px;
+			border-radius: 0px 150px 10px 0px;
+		}
+		
+		..fontstyle{
+			color:white;
+		}
+	</style>
+	<script language="javascript">
+	function cancelForm(){
+		
+		repairform.firstname.value="";
+		repairform.lastname.value="";
+		repairform.icnumber.value="";
+		repairform.phonenumber.value="";
+		repairform.emailaddress.value="";
+		repairform.cartype.value="";
+		repairform.carregistrationdate.value="";
+		
+		alert("Submission cancel");
+			
+		
+	}	
+	function validateForm(){
+		
+		var firstname= repairform.firstname.value;
+		var lastname= repairform.lastname.value;
+		var icnumber= repairform.icnumber.value;
+		var phonenumber=repairform.phonenumber.value;
+		var emailaddress=repairform.emailaddress.value;
+		var cartype=repairform.cartype.value;
+		var carregistrationdate=repairform.carregistrationdate.value;
+		
+		
+		
+		if(hasNumber(firstname)==true||hasNumber(lastname)==true){
+			alert("Name can only contain aplhabet...");
+		}else if(hasNumber(icnumber)==false){
+			alert("IC number can only contain number...");
+		}else if(hasNumber(phonenumber)==false){
+			alert("Phone number can only contain number...");
+		}else if(validateEmail(emailaddress)==false){
+			alert("Invalid format of email address...");
+		}else if(hasNumber(cartype)==true){
+			alert("Car type can only contain alphabet...");
+		}else if(validateDate(carregistrationdate)==false){
+			alert("Date format is invalid...");
+		}else
+			alert("Form submitted!");
+			
+		
+	}
+				 
+	function hasNumber(myString){
+  		return /\d/.test(myString);
+	}
+		
+	function validateEmail(mail){
+ 		if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(mail)){
+    return (true)
+  	}
+    return (false)
+	}
+	
+	function validateDate(dateString){
+		
+    var parts = dateString.split("-");
+    var day = parseInt(parts[2], 10);
+    var month = parseInt(parts[1], 10);
+    var year = parseInt(parts[0], 10);
+			
+    if(year < 1000 || year > 3000 || month == 0 || month > 12)
+        return false;
+
+    var monthLength = [ 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 ];
+
+    if(year % 400 == 0 || (year % 100 != 0 && year % 4 == 0))
+        monthLength[1] = 29;
+
+    return day > 0 && day <= monthLength[month - 1];
+	}
+		
+		
+	</script>
+<body>
+	<div class="bgimage",style="margin:0 auto">
+	<div class="titlepart"><h1 class="title">Repair Form</h1>
+		</div>
+		<div class="form">
+		<form name="repairform">
+		<div style="padding-top:40px;padding-left: 10px"><h3 style="color:white">User Information</h3></div>
+		  <div style="padding-top: 10px; padding-left: 50px; padding-right: 50px; padding-bottom: 20px">
+				<span style="color: white; font-size: 20px; padding-right: 30px">First Name:</span> <input type="text" style="height:20px" name="firstname">
+				<span style="color: white; font-size: 20px;padding-left: 20px;padding-right: 30px ">Last Name:</span> <input type="text" style="height:20px" name="lastname">
+			</div>
+		  <div style="padding-left: 50px; padding-right: 50px; padding-bottom: 20px">
+				<span style="color: white; font-size: 20px;padding-right: 30px">IC Number:</span> <input type="text" style="height:20px" name="icnumber">
+			</div>
+			<div style="padding-left: 50px; padding-right: 50px;padding-bottom: 20px">
+				<span style="color: white; font-size: 20px;">Phone Number:</span> <input type="text" style="height:20px" name="phonenumber">
+				<span style="color: white; font-size: 20px; padding-left: 20px">Email Address:</span> <input type="text" style="height:20px" name="emailaddress">
+			</div>
+		<div style="padding-top:40px;padding-left: 10px"><h3 style="color:white">Car Information</h3></div>
+			<div style="padding-left: 50px; padding-right: 50px; padding-bottom: 20px">
+				<span style="color: white; font-size: 20px;padding-right: 118px">Car Type:</span> <input type="text" style="height:20px" name="cartype">
+			</div>
+			<div style="padding-left: 50px; padding-right: 50px; padding-bottom: 80px">
+				<span style="color: white; font-size: 20px;padding-right: 18px">Car Registration Date:</span> <input type="date" style="height:20px;padding-right: 18px" name="carregistrationdate">
+			</div>
+			<div style="padding-left: 200px;">
+				<input type="button" style="height:30px;width:150px; border-radius: 10px; border: 0;background-color: red" value="Cancel" onClick="cancelForm()">
+			<div style="float:right; margin-right: 200px">
+				<input type="button" style="height:30px;width:150px; border-radius: 10px; border: 0;background-color: greenyellow" value="Submit" onClick="validateForm()">
+			</div>
+			</div>
+		</form>
+		</div>
+	<div class="companylogo"></div>	
+	</div>
+	
+</body>
+</html>
