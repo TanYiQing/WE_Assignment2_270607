@@ -85,7 +85,7 @@
 			alert("Name can only contain aplhabet...");
 		}else if(hasNumber(icnumber)==false){
 			alert("IC number can only contain number...");
-		}else if(hasNumber(phonenumber)==false){
+		}else if(hasAlphabet(phonenumber)==true){
 			alert("Phone number can only contain number...");
 		}else if(validateEmail(emailaddress)==false){
 			alert("Invalid format of email address...");
@@ -105,10 +105,15 @@
 		
 	function validateEmail(mail){
  		if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(mail)){
-    return (true)
+    return true;
   	}
-    return (false)
+    return false;
 	}
+	
+	function hasAlphabet(inputletter){
+   		return/[a-zA-Z]/g.test(inputletter);
+   
+  	}
 	
 	function validateDate(dateString){
 		
